@@ -1,8 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import Counter from "./Counter";
 
-describe.skip("Counter Tests", () => {
+describe("Counter Tests", () => {
   it("Renders correctly", () => {
     render(<Counter />);
 
@@ -22,8 +22,11 @@ describe.skip("Counter Tests", () => {
 
     const counterDisplayElement = screen.getByRole("heading");
     const incrementButton = screen.getByRole("button", { name: "+" });
-    await user.click(incrementButton);
-    await user.click(incrementButton);
+    await act(async () => {
+      await user.click(incrementButton);
+      await user.click(incrementButton);
+    });
+
     expect(counterDisplayElement).toHaveTextContent("2");
   });
 
@@ -33,7 +36,9 @@ describe.skip("Counter Tests", () => {
 
     const counterDisplayElement = screen.getByRole("heading");
     const decrementButton = screen.getByRole("button", { name: "-" });
-    await user.click(decrementButton);
+    await act(async () => {
+      await user.click(decrementButton);
+    });
 
     expect(counterDisplayElement).toHaveTextContent("-1");
   });
