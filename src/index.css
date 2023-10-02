@@ -1,13 +1,44 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  [type="text"],
+  input:where(:not([type])),
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply rounded border-gray-300 shadow-sm;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+table.todoListTable {
+  @apply w-full bg-white border-collapse;
+}
+
+table.todoListTable th {
+  @apply bg-slate-50 text-gray-800 text-left font-semibold px-2 py-1 border-b border-gray-300;
+}
+
+table.todoListTable td {
+  @apply bg-white  text-gray-950 font-normal text-left  px-3 py-2 border-b border-gray-300;
+}
+
+table.todoListTable tr:hover td {
+  @apply bg-gray-100;
+}
+
+table.todoListTable td a.link {
+  @apply underline;
 }
